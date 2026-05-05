@@ -23,7 +23,7 @@ public class JobApplicationServiceTests {
                 new JobApplicationService(repository);
 
         JobApplication app = new JobApplication();
-        app.setCompanyName("Virginia Tech");
+        app.setCompanyName("Sample Company");
 
         when(repository.findAll())
                 .thenReturn(List.of(app));
