@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Application</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1>Add Job Application</h1>
+
+<form th:action="@{/save}" th:object="${application}" method="post">
+
+    <label>Company Name:</label>
+    <input type="text" th:field="*{companyName}" required>
+
+    <label>Job Title:</label>
+    <input type="text" th:field="*{jobTitle}" required>
+
+    <label>Location:</label>
+    <input type="text" th:field="*{location}">
+
+	<label>Status:</label>
+	<select th:field="*{status}">
+	    <option value="Applied">Applied</option>
+	    <option value="Screening">Screening</option>
+	    <option value="Interviewing">Interviewing</option>
+	    <option value="Offer">Offer</option>
+	    <option value="Rejected">Rejected</option>
+	    <option value="Accepted">Accepted</option>
+	</select>
+
+    <label>Date Applied:</label>
+    <input type="date" th:field="*{dateApplied}">
+
+    <label>Follow Up Date:</label>
+    <input type="date" th:field="*{followUpDate}">
+
+    <label>Salary Range:</label>
+    <input type="text" th:field="*{salaryRange}">
+
+    <label>Job URL:</label>
+    <input type="text" th:field="*{jobUrl}">
+
+    <label>Notes:</label>
+    <textarea th:field="*{notes}"></textarea>
+
+    <button type="submit">Save Application</button>
+
+</form>
+
+<a href="/">Back to Dashboard</a>
+
+</body>
+</html>

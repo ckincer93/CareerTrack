@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CareerTrack</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="page-container">
+
+    <header class="hero">
+        <div>
+            <h1>CareerTrack</h1>
+            <p>Track job applications, interview progress, follow-up dates, salary ranges, job links, and notes in one clean dashboard.</p>
+        </div>
+        <a class="button" href="/add">Add New Application</a>
+    </header>
+	
+	<section class="stats-grid">
+	    <div class="stat-card">
+	        <span>Total Applications</span>
+	        <strong th:text="${totalCount}"></strong>
+	    </div>
+
+	    <div class="stat-card">
+	        <span>Interviewing</span>
+	        <strong th:text="${interviewCount}"></strong>
+	    </div>
+
+	    <div class="stat-card">
+	        <span>Offers</span>
+	        <strong th:text="${offerCount}"></strong>
+	    </div>
+
+	    <div class="stat-card">
+	        <span>Accepted</span>
+	        <strong th:text="${acceptedCount}"></strong>
+	    </div>
+	</section>
+
+    <section class="section-title">
+        <h2>Application Dashboard</h2>
+        <p>Review your current opportunities and manage each step of the hiring process.</p>
+    </section>
+
+    <section class="application-grid">
+        <article class="application-card" th:each="app : ${applications}">
+            
+            <div class="card-top">
+                <div class="card-header">
+                    <div>
+                        <h3 th:text="${app.jobTitle}"></h3>
+                        <p class="company" th:text="${app.companyName}"></p>
+                    </div>
+                    <span class="status" th:text="${app.status}"></span>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="detail-grid">
+                    <div class="detail-box">
+                        <span>Location</span>
+                        <p th:text="${app.location}"></p>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Salary</span>
+                        <p th:text="${app.salaryRange}"></p>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Date Applied</span>
+                        <p th:text="${app.dateApplied}"></p>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Follow-Up</span>
+                        <p th:text="${app.followUpDate}"></p>
+                    </div>
+                </div>
+
+                <div class="notes-box">
+                    <span>Notes</span>
+                    <p th:text="${app.notes}"></p>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <a th:if="${app.jobUrl}" th:href="${app.jobUrl}" target="_blank">View Posting</a>
+                <a th:href="@{/edit/{id}(id=${app.id})}">Edit</a>
+                <a class="delete-link" th:href="@{/delete/{id}(id=${app.id})}">Delete</a>
+            </div>
+
+        </article>
+    </section>
+
+</div>
+
+</body>
+</html>
