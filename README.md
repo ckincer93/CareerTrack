@@ -1,7 +1,7 @@
 # CareerTrack
 
 Live Deployment:
-https://github.com/ckincer93/careertrack/tree/main
+https://careertrack-uho8.onrender.com/
 
 GitHub Repository:
 https://github.com/ckincer93/CareerTrack
